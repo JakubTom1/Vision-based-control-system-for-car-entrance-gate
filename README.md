@@ -53,20 +53,39 @@ The gate control system consists of:
 ![Gate control system connections](images/gate_connections_scheme.png)
 
 ## Results of system evaluation
-Comparison of system performance in daytime conditions during low fog.
 
-# Table: Detailed Summary of Detection Results for Daytime Testing in Foggy Conditions
+# Table: Comparison of Vehicle Recognition Algorithms during daytime for recording in two different resolutions and fps ratios.
+| **Resolution** | **Frames per Second** | **Detections (Classic)** | **Detections (YOLO)** | **Average Confidence (Classic)** | **Average Confidence (YOLO)** | **Average Detection Time [s] (Classic)** | **Average Detection Time [s] (YOLO)** |
+|----------------|------------------------|---------------------------|------------------------|-----------------------------------|--------------------------------|------------------------------------------|---------------------------------------|
+| 1920x1080      | 2                      | 3                         | 5                      | 80%                              | 90%                            | 0.09                                     | 0.59                                  |
+| 1920x1080      | 4                      | 7                         | 14                     | 79%                              | 88%                            | 0.12                                     | 0.46                                  |
+| 2560x1440      | 2                      | 3                         | 5                      | 78%                              | 89%                            | 0.19                                     | 0.44                                  |
+| 2560x1440      | 4                      | 4                         | 16                     | 78%                              | 90%                            | 0.19                                     | 0.46                                  |
+
+
+# Table: Detailed summary of detection results for daytime testing in foggy conditions
 The car changed its speed (if not specified, it was 8 km/h) and driving path.
+Video was set to capture 8 fps.
 
 | **Resolution** | **Driving Path**            | **Detections (Classic)** | **Detections (YOLO)** | **Average Confidence (Classic)** | **Average Confidence (YOLO)** | **Average Detection Time [s] (Classic)** | **Average Detection Time [s] (YOLO)** |
 |----------------|-----------------------------|---------------------------|------------------------|-----------------------------------|--------------------------------|------------------------------------------|---------------------------------------|
 | **1920x1080**  | Center of the road (8 km/h) | 1                         | 35                     | 94%                               | 92%                            | 0.05                                     | 0.49                                  |
-|                | Center of the road (10 km/h)| 1                         | 30                     | 88%                               | 91%                            | 0.08                                     | 0.48                                  |
-|                | Center of the road (12 km/h)| 0                         | 29                     | ---                               | 91%                            | ---                                      | 0.49                                  |
-|                | Right side of the road      | 3                         | 33                     | 86%                               | 92%                            | 0.07                                     | 0.46                                  |
-|                | Left side of the road       | 0                         | 29                     | ---                               | 92%                            | ---                                      | 0.60                                  |
+| **1920x1080**  | Center of the road (10 km/h)| 1                         | 30                     | 88%                               | 91%                            | 0.08                                     | 0.48                                  |
+| **1920x1080**  | Center of the road (12 km/h)| 0                         | 29                     | ---                               | 91%                            | ---                                      | 0.49                                  |
+| **1920x1080**  | Right side of the road      | 3                         | 33                     | 86%                               | 92%                            | 0.07                                     | 0.46                                  |
+| **1920x1080**  | Left side of the road       | 0                         | 29                     | ---                               | 92%                            | ---                                      | 0.60                                  |
 | **2560x1440**  | Center of the road (8 km/h) | 1                         | 36                     | 86%                               | 92%                            | 0.19                                     | 0.50                                  |
-|                | Center of the road (10 km/h)| 2                         | 33                     | 87%                               | 92%                            | 0.09                                     | 0.49                                  |
-|                | Center of the road (12 km/h)| 1                         | 25                     | 85%                               | 92%                            | 0.08                                     | 0.48                                  |
-|                | Right side of the road      | 3                         | 34                     | 86%                               | 92%                            | 0.08                                     | 0.47                                  |
-|                | Left side of the road       | 1                         | 35                     | 87%                               | 92%                            | 0.08                                     | 0.47                                  |
+| **2560x1440**  | Center of the road (10 km/h)| 2                         | 33                     | 87%                               | 92%                            | 0.09                                     | 0.49                                  |
+| **2560x1440**  | Center of the road (12 km/h)| 1                         | 25                     | 85%                               | 92%                            | 0.08                                     | 0.48                                  |
+| **2560x1440**  | Right side of the road      | 3                         | 34                     | 86%                               | 92%                            | 0.08                                     | 0.47                                  |
+| **2560x1440**  | Left side of the road       | 1                         | 35                     | 87%                               | 92%                            | 0.08                                     | 0.47                                  |
+
+
+
+# Table: Summary of License Plate Recognition results at night for a stationary car with varying exposure settings
+| **Exposure Settings** | **Average Confidence (Classic)** | **Average Confidence (YOLO)** | **Average Detection Time [s] (Classic)** | **Average Detection Time [s] (YOLO)** |
+|------------------------|----------------------------------|--------------------------------|-------------------------------------------|----------------------------------------|
+| 1/150                 | ---                              | 89%                            | ---                                       | 0.94                                   |
+| 1/200                 | ---                              | 92%                            | ---                                       | 0.77                                   |
+| 1/250                 | 78%                              | 92%                            | 0.11                                      | 3.07                                   |
+| 1/2000                | 82%                              | ---                            | 0.12                                      | ---                                    |
