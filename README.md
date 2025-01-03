@@ -54,7 +54,7 @@ The gate control system consists of:
 
 ## Results of system evaluation
 
-# Table: Comparison of Vehicle Recognition Algorithms during daytime for recording in two different resolutions and fps ratios.
+### Table: Comparison of Vehicle Recognition Algorithms during daytime for recording in two different resolutions and fps ratios.
 | **Resolution** | **Frames per Second** | **Detections (Classic)** | **Detections (YOLO)** | **Average Confidence (Classic)** | **Average Confidence (YOLO)** | **Average Detection Time [s] (Classic)** | **Average Detection Time [s] (YOLO)** |
 |----------------|------------------------|---------------------------|------------------------|-----------------------------------|--------------------------------|------------------------------------------|---------------------------------------|
 | 1920x1080      | 2                      | 3                         | 5                      | 80%                              | 90%                            | 0.09                                     | 0.59                                  |
@@ -63,9 +63,7 @@ The gate control system consists of:
 | 2560x1440      | 4                      | 4                         | 16                     | 78%                              | 90%                            | 0.19                                     | 0.46                                  |
 
 
-# Table: Detailed summary of detection results for daytime testing in foggy conditions
-The car changed its speed (if not specified, it was 8 km/h) and driving path.
-Video was set to capture 8 fps.
+### Table: Detailed summary of detection results for daytime testing in foggy conditions. The car changed its speed (if not specified, it was 8 km/h) and driving path. Video was set to capture 8 fps.
 
 | **Resolution** | **Driving Path**                | **Detections (Classic)** | **Detections (YOLO)** | **Average Confidence (Classic)** | **Average Confidence (YOLO)** | **Average Detection Time [s] (Classic)** | **Average Detection Time [s] (YOLO)** |
 |----------------|---------------------------------|---------------------------|------------------------|-----------------------------------|--------------------------------|------------------------------------------|---------------------------------------|
@@ -82,10 +80,14 @@ Video was set to capture 8 fps.
 
 
 
-# Table: Summary of License Plate Recognition results at night for a stationary car with varying exposure settings
+### Table: Summary of License Plate Recognition results at night for a stationary car with varying exposure settings
 | **Exposure Settings** | **Average Confidence (Classic)** | **Average Confidence (YOLO)** | **Average Detection Time [s] (Classic)** | **Average Detection Time [s] (YOLO)** |
 |------------------------|----------------------------------|--------------------------------|-------------------------------------------|----------------------------------------|
 | 1/150                 | ---                              | 89%                            | ---                                       | 0.94                                   |
 | 1/200                 | ---                              | 92%                            | ---                                       | 0.77                                   |
 | 1/250                 | 78%                              | 92%                            | 0.11                                      | 3.07                                   |
 | 1/2000                | 82%                              | ---                            | 0.12                                      | ---                                    |
+
+## System security
+System, for both algorithms, resisted attempts to fool them by displaying an image of the car on a laptop or phone screen.
+It also proved impossible to fool by moving around with a piece of paper with printed license plate in front of the camera
