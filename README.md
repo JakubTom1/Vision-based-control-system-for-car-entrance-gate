@@ -8,6 +8,8 @@
 
 System was constructed and working on PC.
 
+![Control system scheme](images/control_system_scheme.png)
+
 ## System construction
 ### main.py
 The main program file contains code responsible for reading the image (optionally: by RTSP or loaded video) and extracting the motion detection area. 
@@ -16,9 +18,13 @@ It also causes the system to pause the processing of subsequent image frames for
 
 All detection results and the produced videos displaying the detections are saved in a csv file when the program is interrupted or terminated.
 
+![Main code scheme](images/main_scheme.png)
+
 ### Neural network alghoritm (NN_main.py)
 The program code in which the YOLO algorithm is implemented contains 4 important detection stages using learned detecision models: car location, plate location in the car area, license plate alignment and character recognition. 
 If the plate numbers match any numbers available in the database, a recognition signal is returned.
+
+![Neural network alghoritm scheme](images/YOLO_scheme.png)
 
 ### Classical vision methods (classical_method.py)
 The second license plate recognition algorithm implements classic computer vision techniques. 
@@ -29,6 +35,7 @@ The extracted individual characters are compared with a master image database.
 The most matching numbers are written down and then compared to the database of available license plates. 
 In case of recognition, the corresponding detection signal is returned.
 
+![classical method alghoritm scheme](images/classical_method_scheme.png)
 
 ### ESP32 code (connection_to_python.ino)
 Opening or closing gate signal is received by a microcontroller connected to the local network via Wi-Fi. If the chip has a stable LAN connection, the blue LED lights up. 
@@ -39,8 +46,27 @@ The control is also indicated by a green LED flashing when the state of the cont
 
 ### Gate control electrical connection
 The gate control system consists of:
-*step-down dc-dc converter, changing the voltage from 24v to 5V
-*an esp32 microcontroller
-*a relay powered at 3.3V, controlled by a low state
+- Step-down dc-dc converter, changing the voltage from 24v to 5V
+- An esp32 microcontroller
+ -A relay powered at 3.3V, controlled by a low state
 
 ![Gate control system connections](images/gate_connections_scheme.png)
+
+## Results of system evaluation
+Comparison of system performance in daytime conditions during low fog.
+
+# Table: Detailed Summary of Detection Results for Daytime Testing in Foggy Conditions
+The car changed its speed (if not specified, it was 8 km/h) and driving path.
+
+| **Resolution** | **Driving Path**            | **Detections (Classic)** | **Detections (YOLO)** | **Average Confidence (Classic)** | **Average Confidence (YOLO)** | **Average Detection Time [s] (Classic)** | **Average Detection Time [s] (YOLO)** |
+|----------------|-----------------------------|---------------------------|------------------------|-----------------------------------|--------------------------------|------------------------------------------|---------------------------------------|
+| **1920x1080**  | Center of the road (8 km/h) | 1                         | 35                     | 94%                               | 92%                            | 0.05                                     | 0.49                                  |
+|                | Center of the road (10 km/h)| 1                         | 30                     | 88%                               | 91%                            | 0.08                                     | 0.48                                  |
+|                | Center of the road (12 km/h)| 0                         | 29                     | ---                               | 91%                            | ---                                      | 0.49                                  |
+|                | Right side of the road      | 3                         | 33                     | 86%                               | 92%                            | 0.07                                     | 0.46                                  |
+|                | Left side of the road       | 0                         | 29                     | ---                               | 92%                            | ---                                      | 0.60                                  |
+| **2560x1440**  | Center of the road (8 km/h) | 1                         | 36                     | 86%                               | 92%                            | 0.19                                     | 0.50                                  |
+|                | Center of the road (10 km/h)| 2                         | 33                     | 87%                               | 92%                            | 0.09                                     | 0.49                                  |
+|                | Center of the road (12 km/h)| 1                         | 25                     | 85%                               | 92%                            | 0.08                                     | 0.48                                  |
+|                | Right side of the road      | 3                         | 34                     | 86%                               | 92%                            | 0.08                                     | 0.47                                  |
+|                | Left side of the road       | 1                         | 35                     | 87%                               | 92%                            | 0.08                                     | 0.47                                  |
